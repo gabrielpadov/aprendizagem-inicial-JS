@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor JS - Matérias e Lições</title>
+    <style type="text/css">
+      @import url('css/style.css');
+    </style>
+</head>
+<body>
+    <!-- Navbar lateral -->
+    <nav class="navbar">
+        <div class="navbar-header">
+            <h2>Professor JS</h2>
+            <p>Matérias e Lições</p>
+        </div>
+        <ul class="nav-links">
+            <!-- Matéria 1 -->
+            <li class="subject-item" data-subject="javascript">
+                JavaScript Básico
+            </li>
+            <ul class="lesson-sublist" id="javascript-lessons">
+                <li class="lesson-item" data-lesson="0">Introdução ao JavaScript</li>
+                <li class="lesson-item" data-lesson="1">Variáveis e Tipos</li>
+                <li class="lesson-item" data-lesson="2">Condicionais</li>
+                <li class="lesson-item" data-lesson="3">Loops</li>
+                <li class="lesson-item" data-lesson="4">Funções</li>
+            </ul>
+            
+            <!-- Matéria 2 -->
+            <!-- <li class="subject-item" data-subject="html-css">
+                HTML & CSS
+            </li>
+            <ul class="lesson-sublist" id="html-css-lessons">
+                <li class="lesson-item" data-lesson="5">Estrutura HTML</li>
+                <li class="lesson-item" data-lesson="6">Formulários</li>
+                <li class="lesson-item" data-lesson="7">CSS Básico</li>
+                <li class="lesson-item" data-lesson="8">Layout com Flexbox</li>
+            </ul> -->
+            
+            <!-- Matéria 3 -->
+            <!-- <li class="subject-item" data-subject="web-apis">
+                APIs Web
+            </li>
+            <ul class="lesson-sublist" id="web-apis-lessons">
+                <li class="lesson-item" data-lesson="9">DOM Manipulation</li>
+                <li class="lesson-item" data-lesson="10">Fetch API</li>
+                <li class="lesson-item" data-lesson="11">LocalStorage</li>
+            </ul> -->
+            
+            <!-- Matéria 4 -->
+            <!-- <li class="subject-item" data-subject="projetos">
+                Projetos Práticos
+            </li>
+            <ul class="lesson-sublist" id="projetos-lessons">
+                <li class="lesson-item" data-lesson="12">Calculadora</li>
+                <li class="lesson-item" data-lesson="13">Lista de Tarefas</li>
+                <li class="lesson-item" data-lesson="14">Quiz Interativo</li>
+            </ul> -->
+        </ul>
+    </nav>
+    
+    <main class="main-content">
+        <div class="container">
+            <header>
+                <h1>Professor JS</h1>
+                <p class="subtitle">Aprenda JavaScript de forma interativa</p>
+            </header>
+            
+            <div class="content">
+                <div class="explanation">
+                    <h2 class="lesson-title" id="lesson-title">Introdução ao JavaScript</h2>
+                    <div class="lesson-content" id="lesson-content">
+                        <p>JavaScript é uma linguagem de programação que permite implementar funcionalidades complexas em páginas web.</p>
+                        <p>Nesta primeira lição, vamos aprender como exibir mensagens no console.</p>
+                        <p>Use <code>console.log()</code> para exibir informações no console. Por exemplo:</p>
+                        <pre>console.log("Olá, Mundo!");</pre>
+                        <p>Tente criar um programa que exiba "Meu primeiro programa em JavaScript!" no console.</p>
+                    </div>
+                </div>
+                
+                <div class="code-area">
+                    <div class="editor-container">
+                        <textarea id="code-editor">// Escreva seu código JavaScript aqui
+console.log("Olá, Mundo!");</textarea>
+                    </div>
+                    <div class="buttons">
+                        <button id="run-btn">Executar</button>
+                        <button id="reset-btn">Limpar</button>
+                        <button id="hint-btn">Dica</button>
+                        <button id="submit-btn">Enviar Código</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="output" id="output">// A saída do seu código aparecerá aqui...</div>
+            
+            <div class="submission-feedback" id="submission-feedback">
+                <h3>Feedback do Envio</h3>
+                <p id="feedback-text"></p>
+            </div>
+        </div>
+    </main>
+
+  <script src="js/lessons.js"></script>
+  <script src="js/codeRunner.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
