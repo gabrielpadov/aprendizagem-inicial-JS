@@ -109,7 +109,7 @@
         
         .container {
             width: 100%;
-            max-width: 1000px;
+            max-width: 3000px;
             background-color: white;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -236,6 +236,7 @@
             overflow-y: auto;
             white-space: pre-wrap; /* Isso preserva espaços e quebras de linha */
             word-wrap: break-word;
+            margin-top: 5px;
         }
         
         .submission-feedback {
@@ -262,6 +263,7 @@
         
         .lesson-content {
             line-height: 1.6;
+            padding:5px;
         }
         
         .lesson-content p {
