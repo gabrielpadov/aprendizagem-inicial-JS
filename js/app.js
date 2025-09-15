@@ -44,11 +44,49 @@ subjectItems.forEach((subject) => {
   });
 });
 
+// Função para carregar conteúdo Markdown
+async function loadMarkdownContent(markdownFile) {
+  if (!markdownFile) return null;
+
+  try {
+    const response = await fetch(markdownFile);
+    console.log("response", response);
+    if (!response.ok) {
+      throw new Error(`Erro ao carregar arquivo: ${response.status}`);
+    }
+    return await response.text();
+  } catch (error) {
+    console.error("Erro ao carregar Markdown:", error);
+    return null;
+  }
+}
+
 // Carregar lição selecionada
-function loadLesson(lessonIndex) {
+async function loadLesson(lessonIndex) {
   const lesson = lessons[lessonIndex];
   lessonTitle.textContent = lesson.title;
-  lessonContent.innerHTML = lesson.content;
+
+  // Mostrar mensagem de carregamento
+  lessonContent.innerHTML =
+    '<p class="loading">Carregando conteúdo da lição...</p>';
+
+  // Verificar se temos um arquivo Markdown para carregar
+  let contentHTML = lesson.content;
+
+  if (lesson.markdownFile) {
+    const markdownContent = await loadMarkdownContent(lesson.markdownFile);
+    if (markdownContent) {
+      // Converter Markdown para HTML
+      contentHTML = marked.parse(markdownContent);
+    } else {
+      // Fallback para conteúdo embutido se o arquivo não for encontrado
+      contentHTML =
+        lesson.content ||
+        `<p>Conteúdo não disponível. Arquivo ${lesson.markdownFile} não encontrado.</p>`;
+    }
+  }
+
+  lessonContent.innerHTML = contentHTML;
   codeEditor.value = lesson.code;
   output.textContent = "// A saída do seu código aparecerá aqui...";
   submissionFeedback.style.display = "none";
