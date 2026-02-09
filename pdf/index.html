@@ -3,219 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário PDF - Preenchimento</title>
+    <title>Formulário PDF</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
             font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            padding: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
-        .header {
-            background: #4a6fa5;
-            color: white;
-            padding: 15px;
-            border-radius: 8px 8px 0 0;
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 500px;
+            width: 100%;
             text-align: center;
-            margin-bottom: 5px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .icon {
+            font-size: 60px;
+            margin: 20px 0;
+            color: #667eea;
         }
         
         .instructions {
-            background: white;
-            padding: 15px;
-            border-radius: 0 0 8px 8px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: left;
         }
         
-        .instructions h3 {
-            color: #333;
-            margin-bottom: 10px;
-        }
-        
-        .instructions ul {
+        .instructions ol {
             padding-left: 20px;
-            color: #555;
+            margin: 10px 0;
         }
         
         .instructions li {
-            margin-bottom: 8px;
-        }
-        
-        .pdf-container {
-            width: 100%;
-            height: 70vh;
-            border: 2px solid #4a6fa5;
-            border-radius: 8px;
-            overflow: hidden;
-            background: white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        .actions {
-            margin-top: 15px;
-            text-align: center;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
+            margin-bottom: 10px;
+            color: #555;
         }
         
         .btn {
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 14px;
+            display: inline-block;
+            width: 100%;
+            padding: 16px;
+            margin: 10px 0;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
             font-weight: bold;
+            border: none;
             cursor: pointer;
             transition: all 0.3s;
-            min-width: 120px;
         }
         
-        .btn-primary {
-            background: #4a6fa5;
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background: #3a5a85;
+        .btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         
         .btn-secondary {
-            background: #6c757d;
-            color: white;
+            background: #48bb78;
         }
         
         .btn-secondary:hover {
-            background: #545b62;
+            background: #38a169;
         }
         
-        .btn-success {
-            background: #28a745;
-            color: white;
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            text-align: left;
         }
         
-        .btn-success:hover {
-            background: #218838;
+        .app-badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
         }
         
-        /* Estilos específicos para mobile */
-        @media (max-width: 768px) {
-            .pdf-container {
-                height: 60vh;
-            }
-            
-            .btn {
-                flex: 1;
-                min-width: auto;
-            }
-            
-            .actions {
-                flex-direction: column;
-            }
-        }
-        
-        .download-link {
-            display: inline-block;
-            margin-top: 10px;
-            color: #4a6fa5;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        
-        .download-link:hover {
-            text-decoration: underline;
+        .app-badge {
+            background: #f1f1f1;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #333;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Formulário PDF</h1>
-        <p>Preencha os campos abaixo diretamente no documento</p>
-    </div>
-    
-    <div class="instructions">
-        <h3>📱 Como preencher no celular:</h3>
-        <ul>
-            <li>Toque nos campos para preenchê-los</li>
-            <li>Use o botão "Salvar" abaixo para guardar suas alterações</li>
-            <li>O download salvará uma cópia com seus dados</li>
-            <li>Se não conseguir editar, tente abrir em um navegador desktop</li>
-        </ul>
-    </div>
-    
-    <div class="pdf-container">
-        <iframe src="requerimento_area_particular.pdf#toolbar=1&navpanes=0&scrollbar=1&view=FitH"></iframe>
-    </div>
-    
-    <div class="actions">
-        <button class="btn btn-primary" onclick="reloadPDF()">Recarregar</button>
-        <button class="btn btn-success" onclick="savePDF()">Salvar Alterações</button>
-        <button class="btn btn-secondary" onclick="goBack()">Voltar</button>
-    </div>
-    
-    <div style="text-align: center; margin-top: 15px;">
-        <a href="requerimento_area_particular.pdf" class="download-link" download="formulario_preenchido.pdf">
-            ⬇️ Baixar PDF para editar offline
+    <div class="container">
+        <div class="icon">📋</div>
+        <h1>Formulário PDF Editável</h1>
+        
+        <div class="warning">
+            <strong>Importante para Android:</strong> 
+            Para editar os campos, você precisa abrir com um aplicativo de PDF que suporte formulários.
+        </div>
+        
+        <div class="instructions">
+            <h3>📱 Passo a passo para Android:</h3>
+            <ol>
+                <li>Baixe o PDF primeiro</li>
+                <li>Abra o arquivo com:
+                    <div class="app-badges">
+                        <span class="app-badge">Adobe Acrobat</span>
+                        <span class="app-badge">Xodo PDF</span>
+                        <span class="app-badge">Foxit PDF</span>
+                    </div>
+                </li>
+                <li>Preencha os campos no app</li>
+                <li>Salve e envie</li>
+            </ol>
+        </div>
+        
+        <!-- SOLUÇÃO: Forçar download com atributo download -->
+        <a href="requerimento_area_particular.pdf" class="btn" download="formulario_editavel.pdf">
+            ⬇️ BAIXAR PDF PARA EDITAR
         </a>
+        
+        <!-- Opção para tentar abrir direto (para outros dispositivos) -->
+        <button class="btn btn-secondary" onclick="openPDFDirect()">
+            🔄 TENTAR ABRIR NO NAVEGADOR
+        </button>
+        
+        <p style="margin-top: 20px; color: #666; font-size: 14px;">
+            <small>Recomendamos usar <strong>Adobe Acrobat Reader</strong> ou <strong>Xodo PDF</strong> para melhor experiência</small>
+        </p>
     </div>
 
     <script>
-        function reloadPDF() {
-            const iframe = document.querySelector('iframe');
-            iframe.src = iframe.src.split('?')[0] + '?reload=' + Date.now();
+        // Detectar Android
+        const isAndroid = /Android/i.test(navigator.userAgent);
+        
+        function openPDFDirect() {
+            // Tenta abrir em nova aba com parâmetros específicos
+            const pdfUrl = 'requerimento_area_particular.pdf?forceview=true&timestamp=' + Date.now();
+            window.open(pdfUrl, '_blank');
         }
         
-        function savePDF() {
-            // Como o PDF está em um iframe, precisamos fazer o download
-            const link = document.createElement('a');
-            link.href = 'requerimento_area_particular.pdf';
-            link.download = 'formulario_preenchido_' + new Date().toISOString().slice(0,10) + '.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            // Feedback visual
-            alert('PDF disponível para download! Verifique sua pasta de downloads.');
+        // Se for Android, mostra mensagem específica
+        if (isAndroid) {
+            document.querySelector('.warning').innerHTML = `
+                <strong>⚠️ ATENÇÃO Android:</strong> 
+                O Chrome/Android normalmente abre PDFs no Google Drive, que <strong>NÃO PERMITE</strong> editar formulários.<br><br>
+                <strong>Solução:</strong> Baixe o PDF e abra com um app específico.
+            `;
         }
         
-        function goBack() {
-            if (window.history.length > 1) {
-                window.history.back();
-            } else {
-                window.close();
-            }
+        // Tentativa alternativa: usar blob para forçar comportamento
+        function downloadPDFBlob() {
+            fetch('requerimento_area_particular.pdf')
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'formulario_preenchivel.pdf';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                });
         }
-        
-        // Melhorar experiência mobile
-        document.addEventListener('DOMContentLoaded', function() {
-            // Verificar se é mobile
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            
-            if (isMobile) {
-                // Ajustar altura do iframe para mobile
-                const pdfContainer = document.querySelector('.pdf-container');
-                pdfContainer.style.height = '50vh';
-                
-                // Adicionar instrução específica
-                const instructions = document.querySelector('.instructions ul');
-                const li = document.createElement('li');
-                li.innerHTML = '<strong>Toque prolongado</strong> pode ser necessário para alguns campos';
-                instructions.appendChild(li);
-            }
-        });
     </script>
 </body>
-</html> 
+</html>
